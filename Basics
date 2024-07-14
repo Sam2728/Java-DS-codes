@@ -1,0 +1,35 @@
+import java.util.*;
+class car
+{
+    int cost=10000;
+    String str="honda";
+    void brand()
+    {
+        System.out.print(cost+" "+str);
+    }
+}
+class  honda extends car
+{
+
+    void print() {
+        System.out.print("I AM HONDA\n");
+    }
+}
+class bmw extends car
+{
+    void display()
+    {
+        System.out.print("I AM BMW\n");
+    }
+}
+class main
+        {
+            public static void main(String[] args)
+            {
+                honda obj=new honda();
+                bmw obj2=new bmw();
+                obj.print();
+                obj.brand();
+                obj2.display();
+            }
+        }
