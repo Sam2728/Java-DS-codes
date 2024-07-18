@@ -1,0 +1,76 @@
+import java.util.*;
+class sam
+{
+    Node head;
+    Node tail;
+    class Node
+    {
+        int data;
+        Node prev;
+        Node next;
+        Node(int val)
+        {
+            data=val;
+            prev=null;
+            next=null;
+        }
+    }
+    sam()
+    {
+        head=null;
+        tail=null;
+    }
+    public void insert(int data)
+    {
+        Node newnode=new Node(data);
+        if(head==null)
+        {
+            head=newnode;
+            tail=newnode;
+        }
+        else
+        {
+            tail.next=newnode;
+            newnode.prev=tail;
+            tail=newnode;
+        }
+    }
+    public void sort()
+    {
+        Node temp=head;
+        for(Node temp1=head;temp1.next!=null;temp1=temp1.next)
+        {
+            for(Node temp2=temp1.next;temp2!=null;temp2=temp2.next)
+            {
+                if(temp1.data>temp2.data)
+                {
+                    
+                    int temp3=temp1.data;
+                    temp1.data=temp2.data;
+                    temp2.data=temp3;
+                }
+            }
+        }
+    }
+    public void display()
+    {
+        Node  temp=head;
+        while(temp!=null)
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    public static void main(String[] args) {
+        Scanner s = new Scanner(System.in);
+        sam ss = new sam();
+        while (true) {
+            int a = s.nextInt();
+            if (a < 0)
+                break;
+            ss.insert(a);
+        }
+        ss.sort();
+        ss.display();
+    }
+}
