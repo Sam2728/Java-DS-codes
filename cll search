@@ -1,0 +1,69 @@
+import java.util.*;
+class sam
+{
+  Node head;
+  class Node
+  {
+    int data;
+    Node next;
+    Node(int val)
+    {
+      data=val;
+      next=null;
+    }
+  }
+  sam()
+  {
+    head=null;
+  }
+  void insert(int val)
+  {
+    Node newnode=new Node(val);
+    if(head==null)
+    {
+      newnode.next=newnode;
+      head=newnode;
+    }
+    else
+    {
+      newnode.next=head.next;
+      head.next=newnode;
+      head=newnode;
+    }
+  }
+  void search(int val)
+  {
+    Node temp=head.next;
+    int z=0;
+    while(temp!=head)
+    {
+      if(head.data==val)
+      {
+        z=1;
+        break;
+      }
+        if(temp.data==val)
+        {
+        z=1;
+        }
+    }
+    if(z==1)
+    System.out.print("Found");
+    else
+    System.out.print("Not found");
+  }
+  public static void main(String[] args)
+  {
+    Scanner s=new Scanner(System.in);
+    sam ss=new sam();
+    while(true)
+    {
+      int a=s.nextInt();
+      if(a<0)
+      break;
+      ss.insert(a);
+    }
+    int aa=s.nextInt();
+    ss.search(aa);
+  }
+}
