@@ -1,0 +1,77 @@
+import java.util.Scanner;
+public class sam
+{
+    Node head;
+    Node peak;
+    class Node{
+        int data;
+        Node next;
+        //Node head;
+        
+        Node(int val){
+            data = val;
+            next = null;
+            //head = null;
+        }
+    }
+    sam()
+    {
+        head = null;
+        peak = null;
+    }
+    public void insertend(int val)
+    {
+        Node newnode = new Node(val);
+         
+        if (head==null){
+            head = newnode;
+            peak=newnode;
+        }
+        else{
+            Node temp = head;
+            while(temp.next != null){
+                temp =  temp.next;       
+            }
+            temp.next = newnode;
+            peak = newnode;
+        }
+    }
+    void delete_end()
+    {
+        if(head==null||head.next==null)
+        return;
+        Node temp=head;
+        while(temp.next.next!=null)
+        {
+            temp=temp.next;
+        }
+        temp.next=null;
+        peak=temp;
+        
+    }
+    public void display()
+    {
+        Node temp=head;
+        do
+        {
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }while(temp!=null);
+        System.out.print("peak : "+peak.data);
+    }
+public static void main(String args[]){
+        Scanner sc = new Scanner (System.in);
+        sam list = new sam();
+        
+        int m = sc.nextInt();
+        for (int i =0 ;i<m;i++){
+            int val = sc.nextInt();
+            list.insertend(val);
+        }
+        System.out.println();
+        list.display();
+        System.out.println();
+        list.delete_end();
+        list.display();
+}
+}
