@@ -1,0 +1,47 @@
+class stack
+{
+    int s [] = new int[5];
+    int front=-1;
+    int rear=-1;
+    
+    void enqueue(int val){
+        if(rear == 5-1){
+            System.out.println("full");
+        }
+        if(front == -1)
+        front++;
+        s[++rear] = val;
+    }
+    void dequeue(){
+        /*if(front==-1)
+        {
+            System.out.println("Queue is Empty");
+        }*/
+        s[front++]; 
+    }
+    void display(){
+        for(int i =front;i<=rear;i++){
+            System.out.print(s[i]+ " ");
+        }
+    }
+    public static void main(String args[]){  
+        stack a1 = new stack();
+        
+        a1.enqueue(10);
+        a1.enqueue(20);
+        a1.enqueue(30);
+        a1.enqueue(40);
+        a1.enqueue(50);
+        
+        a1.display();
+        System.out.println();
+        a1.dequeue();
+        a1.display();
+        System.out.println();
+        a1.dequeue();
+        a1.display();
+        System.out.println();
+        a1.dequeue();
+        a1.display();
+    }
+}
