@@ -1,0 +1,59 @@
+import java.util.ArrayList;
+class sam
+{
+    class edge
+    {
+        int v;
+        int w;
+        edge(int a,int b)
+        {
+            v=a;
+            w=b;
+        }
+    }
+    
+    ArrayList<ArrayList<edge>> list=new ArrayList<>();
+    
+    sam(int v)
+    {
+        for(int i=0;i<v;i++)
+        {
+            list.add(new ArrayList<edge>());
+        }
+    }
+    
+    void push(int a,int b,int c)
+    {
+        list.get(a).add(new edge(b,c));
+        list.get(b).add(new edge(a,c));
+    }
+    
+    void display()
+    {
+        for(int i=0;i<list.size();i++)
+        {
+            System.out.print("Vertex "+i+" connected with: ");
+            System.out.println();
+            for(int j=0;j<list.get(i).size();j++)
+            {
+            edge e=list.get(i).get(j);
+            System.out.print(" (vertex "+e.v+" with the weight of "+e.w+")");
+            System.out.println();
+            }
+            System.out.println();
+        }
+    }
+    
+    public static void main(String[] args)
+    {
+        sam s=new sam(5);
+        
+        s.push(0,1,10);
+        s.push(1,2,20);
+        s.push(2,3,30);
+        s.push(3,4,40);
+        s.push(4,0,50);
+        
+        s.display();
+    }
+}
